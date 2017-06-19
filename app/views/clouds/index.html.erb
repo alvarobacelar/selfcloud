@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h1>Clouds</h1>
+  <%= link_to "New cloud", choose_cloud_path, class: 'btn btn-primary' %>
+</div>
+
+<div class="panel panel-default">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Data cadastro</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @clouds.each do |cloud| %>
+        <tr>
+          <td><%= link_to cloud.name, cloud %></td>
+          <td><%= cloud.cloud_type %>
+          <td><%= l cloud.created_at, format: :long %></td>
+          <td><%= link_to 'Editar', edit_cloud_path(cloud), class: 'btn btn-default btn-xs' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+Linode <br>

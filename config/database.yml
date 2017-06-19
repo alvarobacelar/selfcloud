@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: postgres
+  password: n3g@t!v0
+  host: localhost
+
+development:
+  <<: *default
+  database: apilinode_development
+
+test:
+  <<: *default
+  database: apilinode_test
+
+production:
+  <<: *default
+  database: apilinode_production

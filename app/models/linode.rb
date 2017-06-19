@@ -1,0 +1,3 @@
+class Linode < Cloud
+  
+end

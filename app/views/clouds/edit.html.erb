@@ -1,0 +1,11 @@
+
+<% if @cloud.cloud_type == "linode" %>
+  <h1>Edit Cloud <%= @cloud.cloud_type %></h1>
+  <%= render 'formlinode', cloud: @cloud %>
+<% elsif @cloud.cloud_type == "digitalocean" %>
+  <h1>Edit Cloud <%= @cloud.cloud_type %></h1>
+  <%= render 'formdigitalocean', cloud: @cloud %>
+<% elsif @cloud.cloud_type == "aws" %>
+  <h1>Edit Cloud <%= @cloud.cloud_type %></h1>
+  <%= render 'formaws', cloud: @cloud %>
+<% end %>
