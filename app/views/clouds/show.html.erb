@@ -35,6 +35,8 @@
           <thead>
             <tr>
               <th>Label</th>
+              <th>IP</th>
+              <th>Status</th>
               <th>Display Groups</th>
               <th>RAM</th>
               <th>HD</th>
@@ -42,22 +44,27 @@
               <th> Actions </th>
             </tr>
           </thead>
+          <% @linode = Cloud.conecta(@cloud.id, @cloud.cloud_type) %>
           <tbody>
-            <% @cloudone = Cloud.conecta(@cloud.id, @cloud.cloud_type).linode.list.each do |plan| %>
+            <% @linode.linode.list.each do |plan| %>
             <tr class="<%= plan.lpm_displaygroup %>">
               <td><%= plan.label %></td>
+              <td>
+                <% ip = @linode.linode.ip.list(linodeId: plan.linodeid).first %>
+                <%= ip.ipaddress %>
+              </td>
+              <td>
+                <% if plan.status == 1 %>
+                  <button type="button" class="btn btn-success btn-circle"><i class="fa fa-check"></i></button>
+                <% else %>
+                  <button type="button" class="btn btn-danger btn-circle"><i class="fa fa-times"></i></button>
+                <% end %>
+              </td>
               <td><%= plan.lpm_displaygroup %></td>
               <td><%= total = plan.totalram / 1024 %> GB</td>
               <td class="center"><%= plan.totalhd %></td>
               <td class="center"><%= plan.distributionvendor %></td>
-              <script>
-              function rebootMachine(id) {
-                "<%= @cloudone.linode.reboot(linodeid: id) %>"
-              }
-              </script>
-              <td>
-
-              </td>
+              <td> </td>
             </tr>
             <% end %>
           </tbody>
