@@ -1,0 +1,26 @@
+<div class="page-header">
+  <h1>Servers</h1>
+  <%= link_to "Novo Server", new_server_path, class: 'btn btn-primary' %>
+</div>
+
+<div class="panel panel-default">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Label</th>
+        <th>Data cadastro</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @servers.each do |server| %>
+        <tr>
+          <td><%= link_to server.label, server %></td>
+          <td><%= l server.created_at, format: :long %></td>
+          <td><%= link_to 'Editar', edit_server_path(server), class: 'btn btn-default btn-xs' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

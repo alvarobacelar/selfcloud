@@ -1,0 +1,52 @@
+<%= simple_form_for(server, multipart: true) do |f| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    New Cloud
+  </div>
+  <div class="panel-body">
+
+    <% if server.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(server.errors.count, "erro") %></h2>
+
+      <ul>
+        <% server.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    <% end %>
+
+    <div class="row">
+      <%= f.hidden_field :cloud_id %>
+      <%= f.input :label, wrapper_html: {class: 'col-md-8'} %>
+      <%= f.input :lpm_displaygroup, :label => "Group", wrapper_html: {class: 'col-md-5'} %>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label>Region</label><br>
+        <%= f.collection_radio_buttons :datacenterid, @cloudfind.avail.datacenters, :datacenterid, :location %>
+      </div>
+    </div>
+    <%#= f.select :planid, @cloudfind.avail.linodeplans { |r| [r.label, r.price, { class: "select"}] }, include_blank: true %>
+    <div class="row">
+      <div class="col-md-12">
+        <label>Plain</label><br>
+        <%= f.collection_radio_buttons :planid, @cloudfind.avail.linodeplans, :planid, :label %>
+      </div>
+    </div>
+    <div class="row">
+      <%= f.input :paymentterm,  wrapper_html: {class: 'col-md-5'} %>
+    </div>
+  </div>
+
+  <div class="panel-footer">
+    <%= f.submit "Salvar", class: 'btn btn-primary' %> ou
+    <%= link_to "Cancelar", :back, class: 'btn btn-default' %>
+    <%= link_to "Apagar", @server,
+    method: :delete,
+    class: 'btn btn-danger pull-right',
+      data: { confirm: 'Tem certeza que quer apagar?' } if @server.persisted? %>
+    </div>
+  </div>
+  <% end %>

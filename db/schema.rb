@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170616194305) do
+ActiveRecord::Schema.define(version: 20170621152016) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,41 @@ ActiveRecord::Schema.define(version: 20170616194305) do
     t.datetime "updated_at",        null: false
     t.string   "access_key_id"
     t.string   "secret_access_key"
+  end
+
+  create_table "servers", force: :cascade do |t|
+    t.string   "label"
+    t.integer  "datacenterid"
+    t.integer  "planid"
+    t.integer  "paymentterm"
+    t.string   "lpm_displaygroup"
+    t.integer  "cloud_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "distributionvendor"
+    t.integer  "linodeid"
+    t.integer  "totalhd"
+    t.integer  "backupweeklyday"
+    t.integer  "backupwindow"
+    t.integer  "totalram"
+    t.integer  "status"
+    t.integer  "backupenabled"
+    t.string   "ipaddress_public"
+    t.integer  "ipaddress_private"
+    t.string   "rdns_name"
+    t.integer  "watchdog"
+    t.integer  "alert_bwquota_enabled"
+    t.integer  "alert_diskio_threshold"
+    t.integer  "alert_bwout_enabled"
+    t.integer  "alert_bwout_threshold"
+    t.integer  "alert_bwin_threshold"
+    t.integer  "alert_bwquota_threshold"
+    t.integer  "alert_cpu_enabled"
+    t.integer  "alert_cpu_threshold"
+    t.integer  "alert_diskio_enabled"
+    t.integer  "alert_bwin_enabled"
+    t.integer  "isxen"
+    t.integer  "iskvm"
   end
 
   create_table "usuarios", force: :cascade do |t|
