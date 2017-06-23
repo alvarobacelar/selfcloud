@@ -3,7 +3,7 @@ default: &default
   encoding: unicode
   pool: 5
   username: postgres
-  password: n3g@t!v0
+  password: rootinfoway
   host: localhost
 
 development:
