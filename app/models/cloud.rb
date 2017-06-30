@@ -1,5 +1,7 @@
 class Cloud < ApplicationRecord
 
+  has_many :servers
+
   def self.conecta(id, type)
     if type == "linode"
       api_key = Cloud.where(id: id, cloud_type: type).first
@@ -9,5 +11,4 @@ class Cloud < ApplicationRecord
       digitalocean = DropletKit::Client.new(access_token: access_token.api_key)
     end
   end
-
 end

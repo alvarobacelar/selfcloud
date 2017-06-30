@@ -5,6 +5,7 @@
   </h1>
   <div class="pull-right">
     <%= link_to "Editar", edit_cloud_path(@cloud), class: 'btn btn-primary' %>
+    <%= link_to "New server", new_server_path(cloud: @cloud), class: 'btn btn-primary' %>
   </div>
 </div>
 
@@ -35,6 +36,7 @@
           <thead>
             <tr>
               <th>Label</th>
+              <th>Status</th>
               <th>Display Groups</th>
               <th>RAM</th>
               <th>HD</th>
@@ -42,21 +44,29 @@
               <th> Actions </th>
             </tr>
           </thead>
+          <% @linode = Cloud.conecta(@cloud.id, @cloud.cloud_type) %>
           <tbody>
-            <% @cloudone = Cloud.conecta(@cloud.id, @cloud.cloud_type).linode.list.each do |plan| %>
+            <% @linode.linode.list.each do |plan| %>
             <tr class="<%= plan.lpm_displaygroup %>">
               <td><%= plan.label %></td>
+              <!-- <td>
+                <%# ip = @linode.linode.ip.list(linodeId: plan.linodeid).first %>
+                <%# ip.ipaddress %>
+              </td> -->
+              <td>
+                <% if plan.status == 1 %>
+                <button type="button" class="btn btn-success btn-circle"><i class="fa fa-check"></i></button>
+                <% else %>
+                <button type="button" class="btn btn-danger btn-circle"><i class="fa fa-times"></i></button>
+                <% end %>
+              </td>
               <td><%= plan.lpm_displaygroup %></td>
               <td><%= total = plan.totalram / 1024 %> GB</td>
               <td class="center"><%= plan.totalhd %></td>
               <td class="center"><%= plan.distributionvendor %></td>
-              <script>
-              function rebootMachine(id) {
-                "<%= @cloudone.linode.reboot(linodeid: id) %>"
-              }
-              </script>
               <td>
-
+                <%#= button_to "Reboot", clouds_rebootLinode_path(:linodeid => plan.linodeid), class: 'btn btn-warning btn-xs'  %>
+                <%= button_tag "Shut Down", type: 'button', onclick: "shutdownLinode(#{plan.linodeid})", class: 'btn btn-danger btn-xs'  %>
               </td>
             </tr>
             <% end %>
