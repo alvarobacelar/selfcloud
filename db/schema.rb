@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621152016) do
+ActiveRecord::Schema.define(version: 20170802171350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,9 @@ ActiveRecord::Schema.define(version: 20170621152016) do
     t.integer  "alert_bwin_enabled"
     t.integer  "isxen"
     t.integer  "iskvm"
+    t.integer  "distribuitionid"
+    t.integer  "size"
+    t.string   "rootpass"
   end
 
   create_table "usuarios", force: :cascade do |t|

@@ -24,17 +24,33 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <label>Region</label><br>
-        <%= f.collection_radio_buttons :datacenterid, @cloudfind.avail.datacenters, :datacenterid, :location %>
-      </div>
+        <label> Sistema Operacional</label> <br>
+        <%#= f.collection_radio_buttons :distribuitionid,  @cloudfind.avail.distributions, :distribuitionid, :distributionid %>
+
+        </div>
+          <%= f.input :distribuitionid, wrapper_html: {class: 'col-md-5'} %>
     </div>
-    <%#= f.select :planid, @cloudfind.avail.linodeplans { |r| [r.label, r.price, { class: "select"}] }, include_blank: true %>
     <div class="row">
       <div class="col-md-12">
         <label>Plain</label><br>
         <%= f.collection_radio_buttons :planid, @cloudfind.avail.linodeplans, :planid, :label %>
       </div>
     </div>
+    <div class="row">
+          <%= f.input :size, wrapper_html: {class: 'col-md-5'} %>
+    </div>
+     <div class="row">
+          <%= f.input :rootpass, wrapper_html: {class: 'col-md-5'} %>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <label>Region</label><br>
+        <%= f.collection_radio_buttons :datacenterid, @cloudfind.avail.datacenters, :datacenterid, :location %>
+      </div>
+    </div>
+    <%#= f.select :planid, @cloudfind.avail.linodeplans { |r| [r.label, r.price, { class: "select"}] }, include_blank: true %>
+    
+    
     <div class="row">
       <%= f.input :paymentterm,  wrapper_html: {class: 'col-md-5'} %>
     </div>
