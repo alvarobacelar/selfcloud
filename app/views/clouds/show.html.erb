@@ -49,10 +49,10 @@
             <% @linode.linode.list.each do |plan| %>
             <tr class="<%= plan.lpm_displaygroup %>">
               <td><%= plan.label %></td>
-              <!-- <td>
+              <!-- <td> -->
                 <%# ip = @linode.linode.ip.list(linodeId: plan.linodeid).first %>
                 <%# ip.ipaddress %>
-              </td> -->
+              <!-- </td>  -->
               <td>
                 <% if plan.status == 1 %>
                 <button type="button" class="btn btn-success btn-circle"><i class="fa fa-check"></i></button>

@@ -10,16 +10,16 @@
 <div class="panel panel-default">
   <table class="table">
     <tr>
-      <td class="col-md-2">Group</td> <td><%= @server.lpm_displaygroup %></td>
+      <td class="col-md-2">Group</td> <td><%= @server.group %></td>
     </tr>
     <tr>
       <td>Data do cadastro</td> <td><%= l @server.created_at %></td>
     </tr>
   </table>
-  <% @server = Server.list_config_linode(@server.cloud_id, @server.linodeid) %>
-  <% if !@server.present? %>
-    Not have configuration present
-  <% else %>
-    <%= @server %>
-  <% end %>
+  <%#@server = Server.list_config_linode %>
+  <%# if !@server.present? %>
+    <!-- Not have configuration present -->
+  <%# else %>
+    <%#= @server %>
+  <%# end %>
 </div>

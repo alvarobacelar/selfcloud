@@ -75,9 +75,9 @@ class ServersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def server_params
       params.require(:server).permit(:label, :datacenterid, :planid, :paymentterm, :lpm_displaygroup,
-      :cloud_id, :distributionvendor, :linodeid, :totalhd, :backupweeklyday, :backupwindow, :totalram,
+      :cloud_id, :distributionvendor, :linodeid, :totalhd, :distribuitionid, :size, :rootpass, :backupweeklyday, :backupwindow, :totalram,
       :status, :backupenabled, :ipaddress_public, :ipaddress_private, :rdns_name, :watchdog, :alert_bwquota_enabled,
       :alert_diskio_threshold, :alert_bwout_enabled, :alert_bwout_threshold, :alert_bwin_threshold, :alert_bwquota_threshold,
-      :alert_cpu_enabled, :alert_cpu_threshold, :alert_diskio_enabled, :alert_bwin_enabled, :isxen, :iskvm)
+      :alert_cpu_enabled, :alert_cpu_threshold, :alert_diskio_enabled, :alert_bwin_enabled, :isxen, :iskvm, :linode_type, :region, :distribution, :group)
     end
 end
