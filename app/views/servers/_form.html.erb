@@ -19,41 +19,24 @@
 
     <div class="row">
       <%= f.hidden_field :cloud_id %>
-      <%= f.input :label, wrapper_html: {class: 'col-md-8'} %>
-      <%= f.input :lpm_displaygroup, :label => "Group", wrapper_html: {class: 'col-md-5'} %>
+      <%= f.input :label, :label => "Nome do Servidor", wrapper_html: {class: 'col-md-8'} %>
+      <%= f.input :group, :label => "Group", wrapper_html: {class: 'col-md-5'} %>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <label> Sistema Operacional</label> <br>
-        <%#= f.collection_radio_buttons :distribuitionid,  @cloudfind.avail.distributions, :distribuitionid, :distributionid %>
-
-        </div>
-          <%= f.input :distribuitionid, wrapper_html: {class: 'col-md-5'} %>
+      <%= f.input :distribution, :label => "Sistema Operacional",wrapper_html: {class: 'col-md-8'}, collection: distribution_collection %>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <label>Plain</label><br>
-        <%= f.collection_radio_buttons :planid, @cloudfind.avail.linodeplans, :planid, :label %>
-      </div>
+      <%= f.input :linode_type, :label => "Tipo",wrapper_html: {class: 'col-md-8'} ,collection: servers_collection %>
     </div>
     <div class="row">
-          <%= f.input :size, wrapper_html: {class: 'col-md-5'} %>
-    </div>
-     <div class="row">
-          <%= f.input :rootpass, wrapper_html: {class: 'col-md-5'} %>
+       <%= f.input :rootpass, :label => "Senha", wrapper_html: {class: 'col-md-5'} %>
     </div>
     <div class="row">
-      <div class="col-md-12">
-        <label>Region</label><br>
-        <%= f.collection_radio_buttons :datacenterid, @cloudfind.avail.datacenters, :datacenterid, :location %>
-      </div>
+       <%= f.input :region, :label => "Região", wrapper_html: {class: 'col-md-8'},collection: regions_collection %>
     </div>
-    <%#= f.select :planid, @cloudfind.avail.linodeplans { |r| [r.label, r.price, { class: "select"}] }, include_blank: true %>
-    
-    
-    <div class="row">
-      <%= f.input :paymentterm,  wrapper_html: {class: 'col-md-5'} %>
-    </div>
+    <!-- <div class="row">
+       <%#= f.input :stackscript, :label => "Stack Script", wrapper_html: {class: 'col-md-8'},collection: stack_script_collection %>
+    </div> -->
   </div>
 
   <div class="panel-footer">
