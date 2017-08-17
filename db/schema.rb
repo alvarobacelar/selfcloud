@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170807183334) do
+ActiveRecord::Schema.define(version: 20170815204704) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 20170807183334) do
   create_table "servers", force: :cascade do |t|
     t.string   "label"
     t.integer  "cloud_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.integer  "linodeid"
     t.string   "rootpass"
     t.string   "region"
@@ -38,6 +38,10 @@ ActiveRecord::Schema.define(version: 20170807183334) do
     t.string   "group"
     t.string   "linode_type"
     t.string   "stackscript"
+    t.string   "ip"
+    t.string   "stackscript_url"
+    t.string   "hostname_server"
+    t.boolean  "status"
   end
 
   create_table "usuarios", force: :cascade do |t|

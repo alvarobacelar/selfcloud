@@ -45,8 +45,10 @@
             </tr>
           </thead>
           <% @linode = Cloud.conecta(@cloud.id, @cloud.cloud_type) %>
+        
           <tbody>
             <% @linode.linode.list.each do |plan| %>
+              <%# ip = @linode.linode.ip.list(linodeId: plan.linodeid).first %>
             <tr class="<%= plan.lpm_displaygroup %>">
               <td><%= plan.label %></td>
               <!-- <td> -->
@@ -64,12 +66,17 @@
               <td><%= total = plan.totalram / 1024 %> GB</td>
               <td class="center"><%= plan.totalhd %></td>
               <td class="center"><%= plan.distributionvendor %></td>
+              
               <td>
+              
+                <%= button_to "Install Puppet", install_puppet_server_path, class: 'btn btn-success bt-xs'  %>
+
                 <%#= button_to "Reboot", clouds_rebootLinode_path(:linodeid => plan.linodeid), class: 'btn btn-warning btn-xs'  %>
-                <%= button_tag "Shut Down", type: 'button', onclick: "shutdownLinode(#{plan.linodeid})", class: 'btn btn-danger btn-xs'  %>
+                <%#= button_tag "Shut Down", type: 'button', onclick: "shutdownLinode(#{plan.linodeid})", class: 'btn btn-danger btn-xs'  %>
+                <% end %>
               </td>
             </tr>
-            <% end %>
+            
           </tbody>
         </table>
       </div>

@@ -18,7 +18,10 @@
         <tr>
           <td><%= link_to server.label, server %></td>
           <td><%= l server.created_at, format: :long %></td>
-          <td><%= link_to 'Editar', edit_server_path(server), class: 'btn btn-default btn-xs' %></td>
+          <td><%= link_to 'Editar', edit_server_path(server), class: 'btn btn-default btn-xs' %> </td>
+          <td><%= button_to "Start Server", start_server_server_url(server.id), method: :get, data: {disable_with: "Processando..."}, disabled: false, class: 'btn btn-danger bt-xs'  %></td>
+          <td><%= button_to "Initial Setup", install_puppet_server_url(server.id), method: :get, class: 'btn btn-success bt-xs'  %></td>
+
         </tr>
       <% end %>
     </tbody>
