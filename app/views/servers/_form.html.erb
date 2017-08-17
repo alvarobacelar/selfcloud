@@ -23,7 +23,14 @@
       <%= f.input :group, :label => "Group", wrapper_html: {class: 'col-md-5'} %>
     </div>
     <div class="row">
+      <%= f.input :hostname_server, :label => "Hostname", wrapper_html: {class: 'col-md-8'} %>
+    </div>
+
+    <div class="row">
       <%= f.input :distribution, :label => "Sistema Operacional",wrapper_html: {class: 'col-md-8'}, collection: distribution_collection %>
+    </div>
+     <div class="row">
+      <%= f.input :stackscript_url, :label => "StackScript Url", wrapper_html: {class: 'col-md-8'} %>
     </div>
     <div class="row">
       <%= f.input :linode_type, :label => "Tipo",wrapper_html: {class: 'col-md-8'} ,collection: servers_collection %>

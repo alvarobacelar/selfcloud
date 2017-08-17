@@ -19,6 +19,11 @@
           <i class="fa fa-cloud fa-fw"></i>  Clouds
         <% end %>
       </li>
+      <li>
+        <%= link_to servers_path, :class => ('active' if request.path =~/servers/) do %>
+          <i class="fa fa-cloud fa-fw"></i>  Servers
+        <% end %>
+      </li>
     </ul>
   </div>
   <!-- /.sidebar-collapse -->
